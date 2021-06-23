@@ -1,9 +1,17 @@
-import { Controller, Post, Body, Get, Query } from '@nestjs/common';
-import { EjemploDto } from './ejemplo-dto';
+import { Controller, Post, Body, Get, Query, Put } from '@nestjs/common';
+import { EjemploDto, UpdateEjemploDto } from './ejemplo-dto';
 import { EjemploDtoComplejo } from './ejemplo-dto-complejo';
-import { ApiBody, ApiHeader, ApiQuery, ApiResponse, ApiTags } from "@nestjs/swagger";
+import {
+  ApiBody,
+  ApiHeader,
+  ApiQuery,
+  ApiResponse,
+  ApiSecurity,
+  ApiTags,
+} from '@nestjs/swagger';
 import { UserRole } from './enum.userrole';
 
+@ApiSecurity('basic')
 @ApiTags('payload')
 @Controller('payload')
 export class PayloadController {
@@ -14,6 +22,14 @@ export class PayloadController {
   })
   async create(@Body() createDto: EjemploDto) {
     return `This action adds a new object with name: ${createDto.name}`;
+  }
+  @Put()
+  @ApiHeader({
+    name: 'Content-Type',
+    description: 'application-json',
+  })
+  async update(@Body() updateDto: UpdateEjemploDto) {
+    return `This action adds a new object with name: ${updateDto.name}`;
   }
   @Post('complejo')
   @ApiHeader({

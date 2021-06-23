@@ -7,6 +7,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
+    .addSecurity('basic', {
+      type: 'http',
+      scheme: 'basic',
+    })
     .setTitle('Api de ejemplo')
     .setDescription('Descripción del api')
     .setVersion('1.0')

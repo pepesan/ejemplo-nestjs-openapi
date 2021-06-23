@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, OmitType, PartialType, PickType } from "@nestjs/swagger";
 
 export class EjemploDto {
   @ApiProperty({
@@ -16,3 +16,13 @@ export class EjemploDto {
   })
   age: number;
 }
+
+export class UpdateEjemploDto extends PartialType(EjemploDto) {}
+
+export class UpdateAgeEjemploDto extends PickType(EjemploDto, [
+  'age',
+] as const) {}
+
+export class UpdateNoNameCatDto extends OmitType(EjemploDto, [
+  'name',
+] as const) {}
