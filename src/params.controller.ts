@@ -16,17 +16,14 @@ export class ParamsController {
     return 'post /rutas/:id ' + params.id;
   }
   // Ruta con parámetros
-  @Get('sub/:id/:otro')
-  @ApiParam({
-    description: 'Identificativo',
-    name: 'id',
-  })
+  @Get('sub/un/:otro')
   @ApiParam({
     description: 'Otro Identificativo',
     name: 'otro',
+    required: false,
   })
-  findByIdAndOtro(@Param() params) {
-    return 'post /sub/:id/:otro ' + params.id + ':' + params.otro;
+  findByIdAndOtro(@Param('otro') otro: string) {
+    return 'post /sub/un/ ' + otro;
   }
   @Post('sub/:id/:otro')
   modifyById(@Param('id') id: number, @Param('otro') otro: string) {

@@ -1,4 +1,4 @@
-import { ApiProperty, OmitType, PartialType, PickType } from "@nestjs/swagger";
+import { ApiProperty, OmitType, PartialType, PickType } from '@nestjs/swagger';
 
 export class EjemploDto {
   @ApiProperty({
@@ -7,14 +7,18 @@ export class EjemploDto {
     type: String,
     default: 'John',
   })
-  name: string;
+  public name: string;
   @ApiProperty({
     description: 'Edad de la persona',
     required: false,
     type: Number,
     default: 0,
   })
-  age: number;
+  public age: number;
+  constructor(name = 'John', age = 0) {
+    this.name = name;
+    this.age = age;
+  }
 }
 
 export class UpdateEjemploDto extends PartialType(EjemploDto) {}

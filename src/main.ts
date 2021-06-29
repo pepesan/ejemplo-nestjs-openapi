@@ -12,7 +12,9 @@ async function bootstrap() {
       scheme: 'basic',
     })
     .setTitle('Api de ejemplo')
+    .setExternalDoc('Página de documentación', 'http://cursosdedesarrollo')
     .setDescription('Descripción del api')
+    //.addServer('main', 'http://localhost/')
     .setVersion('1.0')
     .addTag('default')
     .build();

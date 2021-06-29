@@ -4,11 +4,11 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { ApiBody, ApiConsumes, ApiTags } from "@nestjs/swagger";
+import { ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { FileUploadDto } from './file-upload-dto';
-import { diskStorage } from "multer";
-import { editFileName, imageFileFilter } from "./file-uploading.utils";
+import { diskStorage } from 'multer';
+import { editFileName } from './file-uploading.utils';
 
 @ApiTags('file-upload')
 @Controller('file-upload')
